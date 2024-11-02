@@ -20,11 +20,6 @@ extern int gtime;
 extern unsigned char socre;
 extern char lastgc,gc,input;
 
-#ifdef _WIN32
-	#define clear system("cls");
-#elif __linux__
-	#define clear system("clear");
-#endif
 
 int initHeadPos(unsigned char x,unsigned char y,char ch);
 int initHeadPos_P(Position8 pos,char ch);
