@@ -8,41 +8,19 @@ int gtime=0;
 char score=0;
 char lastgc=0,gc='N',input=0;
 
-Position8 pointmove(Position8 point){
-	Position8 result={0};
-
-	switch (map[point.x][point.y]){
-		case '^':
-			setpos(&result,point.x,point.y-1);
-			break;
-		case 'v':
-			setpos(&result,point.x,point.y+1);
-			break;
-		case '<':
-			setpos(&result,point.x-1,point.y);
-			break;
-		case '>':
-			setpos(&result,point.x+1,point.y);
-			break;
-	}
-
-	return result;
-}
-
 int change(){
+	gtime++;
 	Position8 newhead={0};
 	Position8 newtail={0};
 
 	newhead=pointmove(head);
 	newtail=pointmove(tail);
 
-//#ifdef HITWALL 
 	if (hitwall && (newhead.x<0 
 		|| newhead.x>=MAPSIZE
 		|| newhead.y<0
 		|| newhead.y>=MAPSIZE))
 		return 1;
-//#endif
 
 	newhead.x=(newhead.x+MAPSIZE) % MAPSIZE;
 	newhead.y=(newhead.y+MAPSIZE) % MAPSIZE;
@@ -55,6 +33,8 @@ int change(){
 			score++;
 			setchar(newhead.x,newhead.y,map[head.x][head.y]);
 			setpos_P(&head,newhead);
+			if(score==MAPSIZE*MAPSIZE-1)
+				return 2;
 			genfood();
 			break;
 		case '^':
@@ -78,10 +58,28 @@ int change(){
 			setpos_P(&tail,newtail);
 	}
 
-	if(score==MAPSIZE*MAPSIZE)
-		return 2;
-
 	return 0;
+}
+
+Position8 pointmove(Position8 point){
+	Position8 result={0};
+
+	switch (map[point.x][point.y]){
+		case '^':
+			setpos(&result,point.x,point.y-1);
+			break;
+		case 'v':
+			setpos(&result,point.x,point.y+1);
+			break;
+		case '<':
+			setpos(&result,point.x-1,point.y);
+			break;
+		case '>':
+			setpos(&result,point.x+1,point.y);
+			break;
+	}
+
+	return result;
 }
 
 int initHeadPos(unsigned char x,unsigned char y,char ch){
