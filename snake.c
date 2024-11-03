@@ -41,7 +41,7 @@ int change(){
 		case 'v':
 		case '<':
 		case '>':
-			if (newhead.x!=tail.x && newhead.y!=tail.y)
+			if (newhead.x!=tail.x || newhead.y!=tail.y)
 				return 1;
 			
 			setchar(newhead.x,newhead.y,map[head.x][head.y]);
