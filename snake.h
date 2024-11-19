@@ -17,7 +17,7 @@ extern Position8 head;
 extern Position8 tail;
 extern char map[MAPSIZE][MAPSIZE];
 extern int gtime;
-extern unsigned char socre;
+extern unsigned char score;
 extern char lastgc,gc,input;
 
 

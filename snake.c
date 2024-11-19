@@ -5,7 +5,7 @@ Position8 tail={0};
 char map[MAPSIZE][MAPSIZE]={0};
 char hitwall=1;
 int gtime=0;
-char score=0;
+unsigned char score=0;
 char lastgc=0,gc='N',input=0;
 
 int change(){
