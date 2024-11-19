@@ -4,8 +4,9 @@
 #include <time.h>
 
 #define MAPSIZE 8
-
 #define HITWALL
+#define GAMEWIN 2
+#define GAMEFAIL 1
 
 typedef struct {
 	char x;
@@ -15,29 +16,30 @@ typedef struct {
 extern char hitwall;
 extern Position8 head;
 extern Position8 tail;
+extern Position8 food;
 extern char map[MAPSIZE][MAPSIZE];
 extern int gtime;
 extern unsigned char score;
 extern char lastgc,gc,input;
 
 
-int initHeadPos(unsigned char x,unsigned char y,char ch);
-int initHeadPos_P(Position8 pos,char ch);
+extern int initHeadPos(unsigned char x,unsigned char y,char ch);
+extern int initHeadPos_P(Position8 pos,char ch);
 
-void setpos(Position8 *obj,char x,char y);
-void setpos_P(Position8 *obj,Position8 trgit);
+extern void setpos(Position8 *obj,char x,char y);
+extern void setpos_P(Position8 *obj,Position8 trgit);
 
-void setchar(char x,char y,char ch);
-void setchar_P(Position8 pos,char ch);
+extern void setchar(char x,char y,char ch);
+extern void setchar_P(Position8 pos,char ch);
 
-void genfood();
+extern void genfood();
 
-int setdirUP();
-int setdirDOWN();
-int setdirLEFT();
-int setdirRIGHT();
+extern int setdirUP();
+extern int setdirDOWN();
+extern int setdirLEFT();
+extern int setdirRIGHT();
 
-Position8 pointmove(Position8 point);
+extern Position8 pointmove(Position8 point);
 
-int change();
-
+extern int change();
+extern int resetgame();

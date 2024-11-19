@@ -2,12 +2,19 @@
 
 Position8 head={0};
 Position8 tail={0};
+Position8 food={0};
 char map[MAPSIZE][MAPSIZE]={0};
 char hitwall=1;
 int gtime=0;
 unsigned char score=0;
 char lastgc=0,gc='N',input=0;
 
+int resetgame(){
+	for(int i=0;i<MAPSIZE*MAPSIZE;i++)
+		map[i/MAPSIZE][i%MAPSIZE]=0;
+	gtime=0;
+	score=0;
+}
 int change(){
 	gtime++;
 	Position8 newhead={0};
@@ -146,4 +153,6 @@ void genfood(){
 			break;
 	}
 	setchar(x,y,'@');
+	food.x=x;
+	food.y=y;
 }
