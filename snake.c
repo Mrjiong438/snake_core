@@ -27,7 +27,7 @@ int change(){
 		|| newhead.x>=MAPSIZE
 		|| newhead.y<0
 		|| newhead.y>=MAPSIZE))
-		return 1;
+		return GAMEFAIL;
 
 	newhead.x=(newhead.x+MAPSIZE) % MAPSIZE;
 	newhead.y=(newhead.y+MAPSIZE) % MAPSIZE;
@@ -41,7 +41,7 @@ int change(){
 			setchar(newhead.x,newhead.y,map[head.x][head.y]);
 			setpos_P(&head,newhead);
 			if(score==MAPSIZE*MAPSIZE-1)
-				return 2;
+				return GAMEWIN;
 			genfood();
 			break;
 		case '^':
